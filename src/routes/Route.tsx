@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import {
   Route as ReactDomRoute,
   RouteProps as ReactDomRouteProps,
@@ -22,7 +22,7 @@ const Route:React.FC<RouteProps> = ({ isPrivate = false, component: Component, .
         <Component />
       ) : (
         <Redirect to={{
-          pathname: isPrivate ? '/' : '/dashboard',
+          pathname: isPrivate ? '/' : '/home',
           state: { from: location },
         }}
         />

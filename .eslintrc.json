@@ -26,6 +26,7 @@
     "prettier"
   ],
   "rules": {
+    "no-unused-vars": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "no-use-before-define": "off",
@@ -46,7 +47,9 @@
         "tsx": "never"
       }
     ],
-    "linebreak-style": ["error", "windows"]
+    "react/prop-types": 0,
+    "react/jsx-props-no-spreading": "off",
+    "linebreak-style": ["error", "unix"]
   },
   "settings": {
     "import/resolver": {
