@@ -1,4 +1,4 @@
-﻿import React, {
+import React, {
   InputHTMLAttributes, useEffect, useRef, useCallback, useState,
 } from 'react';
 import { IconBaseProps } from 'react-icons';
