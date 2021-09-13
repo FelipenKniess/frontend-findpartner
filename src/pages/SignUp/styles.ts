@@ -15,7 +15,7 @@ export const Content = styled.div`
     align-items: center;
     place-content: center;
     width: 100%;
-    max-width: 850px;
+    max-width: 1100px;
 
 `;
 
@@ -82,7 +82,7 @@ export const AnimationContainer = styled.div`
     }
 
     .create-account {
-        color: #ff9000;
+        color: #13997E;
         display: flex;
         align-items: center;
         margin-top: 24px;
@@ -92,7 +92,7 @@ export const AnimationContainer = styled.div`
         transition: color 0.2s;
 
         &:hover {
-            color: ${shade(0.2, '#ff9000')};
+            color: ${shade(0.2, '#13997E')};
         }
 
         svg {
@@ -105,5 +105,5 @@ export const Background = styled.div`
     flex: 1;
     background: url(${signUpBackgroundImg}) no-repeat center;
     background-size: cover;
-
+    opacity: 0.4;
 `;
