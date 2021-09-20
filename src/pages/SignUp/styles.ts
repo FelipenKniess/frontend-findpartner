@@ -15,8 +15,7 @@ export const Content = styled.div`
     align-items: center;
     place-content: center;
     width: 100%;
-    max-width: 1100px;
-
+    max-width: 50%;
 `;
 
 const appearFromRight = keyframes`
@@ -49,6 +48,18 @@ export const AnimationContainer = styled.div`
         margin-top: 80px;
         width: 340px;
 
+        .user-type {
+          margin-bottom: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+          font-size: 17px;
+
+          div {
+            margin-top: inherit;
+          }
+        }
 
         div {
             & + div {

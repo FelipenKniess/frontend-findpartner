@@ -22,7 +22,7 @@ export const Content = styled.div`
     align-items: center;
     place-content: center;
     width: 100%;
-    max-width: 1100px;
+    max-width: 50%;
 
 `;
 

@@ -45,14 +45,14 @@ const SignIn:React.FC = () => {
         email: data.email,
         password: data.password,
       });
-    } catch (err) {
+    } catch (err: any) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
         formRef.current?.setErrors(errors);
 
         return;
       }
-      toast.error('Ocorreu um erro ao fazer login, cheque as credenciais');
+      toast.error(err.response.data.message);
     }
   }, [signIn]);
   return (

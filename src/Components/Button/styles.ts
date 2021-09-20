@@ -9,9 +9,11 @@ export const Container = styled.button`
     border-radius: 10px;
     border: 0;
     padding: 0 16px;
-    color: #312E38;
-    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     transition: background 0.2s;
+    color: #FFF;
 
     &:hover {
         background: ${shade(0.2, '#13997E')};
