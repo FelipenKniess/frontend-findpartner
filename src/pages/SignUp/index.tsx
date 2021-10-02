@@ -87,7 +87,7 @@ const SignUp:React.FC = () => {
                 Sou Fornecedor
               </div>
             </div>
-            <Input name="name" icon={FiUser} placeholder="Nome" />
+            <Input name="name" icon={FiUser} placeholder="Nome (pessoal ou empresarial)" />
             <Input name="email" icon={FiMail} placeholder="E-mail" />
             <Input name="password" icon={FiLock} type="password" placeholder="Senha" />
             <Button type="submit">Cadastrar</Button>

@@ -24,7 +24,7 @@ interface SignInFormData {
 const SignIn:React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { user, signIn } = useAuth();
+  const { signIn, user } = useAuth();
 
   const handleSubmit = useCallback(async (data: SignInFormData) => {
     try {

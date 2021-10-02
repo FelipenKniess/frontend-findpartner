@@ -1,6 +1,7 @@
 import React, {
   createContext, useCallback, useState, useContext,
 } from 'react';
+import { toast } from 'react-toastify';
 import api from '../services/api';
 
 interface SignInCredentials {
@@ -10,13 +11,21 @@ interface SignInCredentials {
 
 interface AuthState {
     token: string;
-    user: object;
+    user: UserData;
 }
 
 interface AuthContextData {
-    user: object;
+    user: UserData;
     signIn(credentials: SignInCredentials): Promise<void>;
     signOut(): void;
+}
+
+interface UserData {
+  id: String,
+  email: string,
+  name: string,
+  type: number,
+  avatar: string
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -44,6 +53,7 @@ const AuthProvider:React.FC = ({ children }) => {
     localStorage.setItem('@FindPartner:user', JSON.stringify(user));
 
     setData({ token, user });
+    toast.success(`Seja bem vindo ${user.name} `);
   }, []);
 
   const signOut = useCallback(() => {
