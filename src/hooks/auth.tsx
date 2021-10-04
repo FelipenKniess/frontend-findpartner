@@ -18,6 +18,8 @@ interface AuthContextData {
     user: UserData;
     signIn(credentials: SignInCredentials): Promise<void>;
     signOut(): void;
+    updateUser(user: UserData): void;
+    token:string
 }
 
 interface UserData {
@@ -25,7 +27,9 @@ interface UserData {
   email: string,
   name: string,
   type: number,
-  avatar: string
+  avatar: string,
+  telephone: string,
+  description: string,
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -56,15 +60,28 @@ const AuthProvider:React.FC = ({ children }) => {
     toast.success(`Seja bem vindo ${user.name} `);
   }, []);
 
+  const updateUser = useCallback((user: UserData) => {
+    setData({
+      token: data.token,
+      user,
+    });
+
+    localStorage.setItem('@FindPartner:user', JSON.stringify(data.user));
+  }, [data.token, data.user]);
+
   const signOut = useCallback(() => {
     localStorage.removeItem('@FindPartner:token');
     localStorage.removeItem('@FindPartner:user');
 
+    toast.info('Você foi deslogado, faça login novamente!');
     setData({} as AuthState);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+    <AuthContext.Provider value={{
+      user: data.user, signIn, signOut, updateUser, token: `Baerer ${data.token}`,
+    }}
+    >
       { children }
     </AuthContext.Provider>
   );

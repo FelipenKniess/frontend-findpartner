@@ -8,7 +8,8 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
+    margin-top:40px;
+    margin-bottom:40px;
     text-transform: uppercase;
   }
   form {
@@ -24,6 +25,24 @@ export const Container = styled.div`
     textarea {
       width: 500px;
       height: 100px;
+      resize: none;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 300px;
+        height: 200px;
+        border-radius: 40px;
+      }
+
+      input {
+        margin-top: 10px;
+      }
     }
 
     button {
