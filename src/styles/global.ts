@@ -37,7 +37,7 @@ a {
 .container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1040px;
+  max-width: 1240px;
 }
 
 

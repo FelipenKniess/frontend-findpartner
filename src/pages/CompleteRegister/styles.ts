@@ -12,11 +12,11 @@ export const Container = styled.div`
     margin-bottom:40px;
     text-transform: uppercase;
   }
+
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
     padding: 50px;
     background: #0C0E13;
     border-radius: 20px;
