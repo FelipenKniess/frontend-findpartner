@@ -22,7 +22,7 @@ interface AuthContextData {
     token:string
 }
 
-interface UserData {
+export interface UserData {
   id: String,
   email: string,
   name: string,

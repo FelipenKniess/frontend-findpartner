@@ -25,6 +25,12 @@ const Header = () => {
         <Link to="/projects">
           Procurar usuários
         </Link>
+        <Link to="/projects">
+          Minhas conexões
+        </Link>
+        <Link to="/projects">
+          Usuários interessados
+        </Link>
 
       </div>
 

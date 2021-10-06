@@ -47,6 +47,11 @@ export default function BasicMenu() {
             Meus interesses
           </Link>
         </MenuItem>
+        <MenuItem>
+          <Link to="/createProducts">
+            Meus produtos
+          </Link>
+        </MenuItem>
         <MenuItem onClick={signOut}>
           Logout
         </MenuItem>
