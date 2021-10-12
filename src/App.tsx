@@ -10,7 +10,7 @@ const App:React.FC = () => (
     <AuthProvider>
       <Routes />
       <GlobalStyle />
-      <ToastContainer />
+      <ToastContainer position="top-center" />
     </AuthProvider>
   </BrowserRouter>
 );

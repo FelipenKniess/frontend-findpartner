@@ -1,59 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiPhoneCall } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Container } from './styles';
 import Header from '../../Components/Header';
 import noImageAvatar from '../../assets/images/no-image.gif';
-import imgTeste from '../../assets/images/imgteste.jpg';
+import { useAuth, UserData } from '../../hooks/auth';
+import api from '../../services/api';
 
 const Home:React.FC = () => {
-  const x = 2;
+  const { user, token } = useAuth();
+  const [users, setUsers] = useState<UserData[]>([]);
+
+  useEffect(() => {
+    async function execute() {
+      const oppositeUsers = await api.get('/users/allUsers', {
+        headers: {
+          authorization: token,
+        },
+      });
+      setUsers(oppositeUsers.data);
+    }
+
+    execute();
+  }, [token]);
+
   return (
     <>
       <Header />
       <Container>
         <div className="container">
+          <h1>
+            Principais
+            {user.type === 1 ? ' Fornecedores ' : ' Varejistas '}
+          </h1>
           <div className="users">
-            <Link to="/user/f722a01c-c690-405a-bc5b-181d98affa4e" className="user">
-              <img src={imgTeste} alt="" />
-              <span className="name-user">Felipe Kniess</span>
-              <span className="tel-user">
-                <FiPhoneCall />
-                47997909471
-              </span>
-            </Link>
-            <Link to="/user/f722a01c-c690-405a-bc5b-181d98affa4e" className="user">
-              <img src={noImageAvatar} alt="" />
-              <span className="name-user">Felipe Kniess</span>
-              <span className="tel-user">
-                <FiPhoneCall />
-                47997909471
-              </span>
-            </Link>
-            <Link to="/user/f722a01c-c690-405a-bc5b-181d98affa4e" className="user">
-              <img src={noImageAvatar} alt="" />
-              <span className="name-user">Felipe Kniess</span>
-              <span className="tel-user">
-                <FiPhoneCall />
-                47997909471
-              </span>
-            </Link>
-            <Link to="/user/f722a01c-c690-405a-bc5b-181d98affa4e" className="user">
-              <img src={imgTeste} alt="" />
-              <span className="name-user">Felipe Kniess</span>
-              <span className="tel-user">
-                <FiPhoneCall />
-                47997909471
-              </span>
-            </Link>
-            <Link to="/user/f722a01c-c690-405a-bc5b-181d98affa4e" className="user">
-              <img src={noImageAvatar} alt="" />
-              <span className="name-user">Felipe Kniess</span>
-              <span className="tel-user">
-                <FiPhoneCall />
-                47997909471
-              </span>
-            </Link>
+            {users.map((resUser) => (
+              <Link to={`/user/${resUser.id}`} className="user">
+                <img src={resUser.avatar ? `http://localhost:3333/${resUser.avatar}` : noImageAvatar} alt={resUser.name} />
+                <span className="name-user">{resUser.name}</span>
+
+                <span className="tel-user">
+                  <FiPhoneCall />
+                  {resUser.telephone ? resUser.telephone : 'Sem número cadastrado'}
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </Container>

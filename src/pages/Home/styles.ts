@@ -7,12 +7,18 @@ export const Container = styled.div`
   margin-top: 40px;
   margin-bottom: 40px;
 
+  h1 {
+    text-align: center;
+    font-size: 25px;
+  }
+
   .users {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 25px;
+    margin-top: 25px;
 
     .user {
       display: flex;
@@ -21,6 +27,7 @@ export const Container = styled.div`
       padding: 5px;
       border-radius: 10px;
       transition: 0.2s background;
+      border: 1px solid #0C0E13;
       &:hover{
         background: ${shade(0.2, '#1F1D2B')};
       }

@@ -45,6 +45,27 @@ export const Container = styled.div`
       }
     }
 
+    .address {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+      > div {
+        gap: 30px;
+        display: flex;
+        justify-content: space-between;
+
+        div {
+          flex: 1;
+          span {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
     button {
       width: 400px;
     }

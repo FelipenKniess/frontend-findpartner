@@ -22,14 +22,25 @@ interface AuthContextData {
     token:string
 }
 
+interface Address {
+  cep: string;
+  district: string;
+  uf: string;
+  city: string;
+  number: string;
+  longitude: string;
+  lagitude: string
+}
+
 export interface UserData {
-  id: String,
+  id: string,
   email: string,
   name: string,
   type: number,
   avatar: string,
   telephone: string,
   description: string,
+  address: Address;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
