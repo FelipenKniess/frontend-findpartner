@@ -8,7 +8,7 @@ import { useAuth } from '../../hooks/auth';
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -43,15 +43,17 @@ export default function BasicMenu() {
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to="/interests">
+          <Link to="/registerInterests">
             Meus interesses
           </Link>
         </MenuItem>
-        <MenuItem>
-          <Link to="/createProducts">
-            Meus produtos
-          </Link>
-        </MenuItem>
+        {user.type === 2 && (
+          <MenuItem>
+            <Link to="/registerProducts">
+              Meus produtos
+            </Link>
+          </MenuItem>
+        )}
         <MenuItem onClick={signOut}>
           Logout
         </MenuItem>

@@ -41,6 +41,7 @@ export interface UserData {
   telephone: string,
   description: string,
   address: Address;
+  createdAt?: string;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);

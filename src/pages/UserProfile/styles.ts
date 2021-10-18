@@ -28,10 +28,12 @@ export const Container = styled.div`
       }
 
       .tel {
-        display: flex;
-        gap: 10px;
-        svg {
-          color: #13997E;
+        span {
+          display: flex;
+          gap: 10px;
+          svg {
+            color: #13997E;
+          }
         }
       }
       .data {
@@ -62,6 +64,10 @@ export const Container = styled.div`
       }
     }
     .image-profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
       img {
         width: 400px;
         height: 400px;

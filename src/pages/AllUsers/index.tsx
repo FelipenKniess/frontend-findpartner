@@ -8,7 +8,7 @@ import { useAuth, UserData } from '../../hooks/auth';
 import api from '../../services/api';
 
 const Home:React.FC = () => {
-  const { user, token } = useAuth();
+  const { token } = useAuth();
   const [users, setUsers] = useState<UserData[]>([]);
 
   useEffect(() => {
@@ -30,8 +30,7 @@ const Home:React.FC = () => {
       <Container>
         <div className="container">
           <h1>
-            Principais
-            {user.type === 1 ? ' Fornecedores ' : ' Varejistas '}
+            Filtro xQDL
           </h1>
           <div className="users">
             {users.map((resUser) => (
