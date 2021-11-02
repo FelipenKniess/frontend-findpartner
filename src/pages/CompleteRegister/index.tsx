@@ -67,18 +67,26 @@ const CompleteRegister:React.FC = () => {
     }
 
     async function getUfs() {
-      const ufsIbge = await api.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados');
-
-      return ufsIbge.data;
+      try {
+        const ufsIbge = await api.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados');
+        return ufsIbge.data;
+      } catch (err) {
+        console.error(err);
+        return [];
+      }
     }
 
     exec();
   }, [token, user.id]);
 
   const handleChangeUf = useCallback(async () => {
-    await api.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${formRef.current?.getFieldValue('uf')}/municipios`).then((response) => {
-      setCitys(response.data);
-    });
+    try {
+      await api.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${formRef.current?.getFieldValue('uf')}/municipios`).then((response) => {
+        setCitys(response.data);
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }, []);
 
   const handleSubmit = useCallback(async (data: CompleteRegisterData) => {

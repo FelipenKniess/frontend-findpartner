@@ -4,39 +4,91 @@ import React, {
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
-import { AiOutlineAppstoreAdd } from 'react-icons/ai';
 import { CgExtensionRemove, CgExtensionAdd } from 'react-icons/cg';
+import { toast } from 'react-toastify';
 import { Container } from './styles';
 import Header from '../../Components/Header';
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
 import DefaultInterests from '../../utils/dataInterestsDefault.json';
+import api from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
-interface InterestsFormData {
-  interest: string;
+interface InterestsUserData {
+  id: string,
+  description: string
+}
+
+interface RegisterInterestFormData {
+  interest: string
 }
 
 const RegisterInterests:React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const [interestsUser, setInterestsUser] = useState<InterestsUserData[]>([]);
+  const { token } = useAuth();
 
-  const handleSubmit = useCallback((data:InterestsFormData) => {
-    console.log(data);
-  }, []);
+  useEffect(() => {
+    async function execute() {
+      const { data } = await api.get('/interests', {
+        headers: {
+          authorization: token,
+        },
+      });
+      setInterestsUser(data);
+    }
+    execute();
+  }, [token]);
 
-  const HandleAddListInterests = useCallback(() => {
-    // console.log(data);
-  }, []);
+  const handleSubmit = useCallback(async ({ interest }:RegisterInterestFormData) => {
+    if (!interest.trim()) {
+      return;
+    }
+    try {
+      const { data } = await api.post('/interests', {
+        interest,
+      }, {
+        headers: {
+          authorization: token,
+        },
+      });
+      setInterestsUser([...interestsUser, data]);
+      toast.success('Interesse cadastrado!');
+    } catch (err:any) {
+      toast.error(err.response.data.message);
+    }
+  }, [interestsUser, token]);
+
+  const handleRemoveInterest = useCallback(async (id: string) => {
+    try {
+      await api.delete(`/interests/${id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      const interests = interestsUser.filter((interest) => interest.id !== id);
+      setInterestsUser(interests);
+      toast.success('Interesse Removido!');
+    } catch (err:any) {
+      toast.error(err.response.data.message);
+    }
+  }, [token, interestsUser]);
   return (
     <>
       <Header />
       <Container>
         <div className="container">
-
           <div className="storage-interests">
-            <h2>Banco de interesses (interesses padrões) </h2>
+            <h2>Banco de interesses</h2>
             <div className="content-interests">
               {DefaultInterests.map((defaultInterest) => (
-                <div>
+                <div
+                  key={defaultInterest.description}
+                  onClick={() => handleSubmit({ interest: defaultInterest.description })}
+                  onKeyDown={() => handleSubmit({ interest: defaultInterest.description })}
+                  role="button"
+                  tabIndex={0}
+                >
                   {defaultInterest.description}
                   {' '}
                   <span><CgExtensionAdd /></span>
@@ -49,19 +101,26 @@ const RegisterInterests:React.FC = () => {
             <Form ref={formRef} onSubmit={handleSubmit}>
               <div className="addInterest">
                 <Input className="inputInterest" name="interest" />
-                <Button type="button" onClick={HandleAddListInterests}>Adicionar</Button>
-
+                <Button type="submit">Adicionar</Button>
               </div>
-              {/* <span className="title-interests">Interesses:</span> */}
 
               <div className="content-interests">
-                <div>
-                  Agricultura 1
-                  {' '}
-                  <span><CgExtensionRemove /></span>
-                </div>
+                {interestsUser.map((interest) => (
+                  <div
+                    key={interest.id}
+                    onClick={() => handleRemoveInterest(interest.id)}
+                    onKeyDown={() => handleRemoveInterest(interest.id)}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    {interest.description}
+                    {' '}
+                    <span>
+                      <CgExtensionRemove />
+                    </span>
+                  </div>
+                ))}
               </div>
-              <Button className="buttonSubmit" type="submit">Cadastar</Button>
             </Form>
           </div>
         </div>

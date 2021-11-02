@@ -9,9 +9,12 @@ export const Container = styled.div`
   .container {
     display: flex;
     gap: 25px;
+    width: 100%;
+    justify-content: space-between;
 
     .box {
       display: flex;
+      flex: 1;
       flex-direction: column;
       padding: 40px;
       background: #0C0E13;
@@ -60,6 +63,14 @@ export const Container = styled.div`
               font-size: 14px;
             }
           }
+        }
+      }
+
+      .address {
+        display: flex;
+        gap: 8px;
+        img {
+          width:20px;
         }
       }
     }

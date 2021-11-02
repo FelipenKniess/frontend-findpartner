@@ -10,6 +10,7 @@ import noImageAvatar from '../../assets/images/no-image.gif';
 import Button from '../../Components/Button';
 import api from '../../services/api';
 import { useAuth, UserData } from '../../hooks/auth';
+import pinLocalizacao from '../../assets/images/pin-localizacao.png';
 
 interface UserInfoParams {
   id: string;
@@ -122,33 +123,24 @@ const UserProfile:React.FC = () => {
                   </span>
                 )}
               </span>
-
-              <div className="interesses">
-                <h4>Interesses:</h4>
-                <div className="content">
-                  <div>
-                    <span>Esportes</span>
-                  </div>
-                  <div>
-                    <span>Esportes</span>
-                  </div>
-                  <div>
-                    <span>Esportes</span>
-                  </div>
-                  <div>
-                    <span>Esportes</span>
-                  </div>
-                  <div>
-                    <span>Esportes</span>
-                  </div>
-                  <div>
-                    <span>Esportes</span>
-                  </div>
-                  <div>
-                    <span>Esportes</span>
+              {user.interest.length > 0 && (
+                <div className="interesses">
+                  <h4>Interesses:</h4>
+                  <div className="content">
+                    {user.interest.map((interest) => (
+                      <div>
+                        <span>{interest.description}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
+              )}
+              {user.address[0] && (
+                <div className="address">
+                  <img src={pinLocalizacao} alt="Pin localizacao" />
+                  <span>{`${user.address[0].street}, ${user.address[0].district} - ${user.address[0].city} - ${user.address[0].uf}`}</span>
+                </div>
+              )}
             </div>
             <div className="image-profile">
               <img src={user.avatar ? `http://localhost:3333/${user.avatar}` : noImageAvatar} alt="profile" />

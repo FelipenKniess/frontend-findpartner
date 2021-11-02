@@ -28,8 +28,14 @@ interface Address {
   uf: string;
   city: string;
   number: string;
+  street: string;
   longitude: string;
   lagitude: string
+}
+
+interface Interest {
+  id: string,
+  description: string
 }
 
 export interface UserData {
@@ -40,7 +46,8 @@ export interface UserData {
   avatar: string,
   telephone: string,
   description: string,
-  address: Address;
+  address: Address[];
+  interest: Interest[];
   createdAt?: string;
 }
 

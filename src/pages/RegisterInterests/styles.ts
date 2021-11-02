@@ -12,8 +12,18 @@ export const Container = styled.div`
 
   .container {
     display:flex;
-    flex-direction: column;
+    justify-content: space-around;
     gap: 40px;
+  }
+
+  .storage-interests {
+    width: 40%;
+    height: 400px;
+    /* overflow: scroll; */
+  }
+
+  .my-interests{
+    width: 60%;
   }
 
   .storage-interests, .my-interests {
@@ -26,6 +36,14 @@ export const Container = styled.div`
       color: #0f7a64;
       font-weight: bold;
       text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      padding: 20px
     }
 
     .addInterest {
@@ -80,7 +98,8 @@ export const Container = styled.div`
     }
 
     .buttonSubmit {
-      margin-top: 20px;
+      margin-top: auto;
+      width: 200px;
     }
   }
 `;

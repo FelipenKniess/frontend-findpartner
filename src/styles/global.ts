@@ -10,6 +10,10 @@ export default createGlobalStyle`
     outline: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #1F1D2B;
     color: #FFF;
