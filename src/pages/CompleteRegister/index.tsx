@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { FiPhoneCall } from 'react-icons/fi';
+import { FaRegUserCircle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { Container } from './styles';
 import Header from '../../Components/Header';
@@ -17,6 +18,7 @@ import { useAuth } from '../../hooks/auth';
 import noImageAvatar from '../../assets/images/no-image.gif';
 
 interface CompleteRegisterData {
+  name: string;
   description: string;
   telephone: string;
   city: string;
@@ -89,12 +91,11 @@ const CompleteRegister:React.FC = () => {
     }
   }, []);
 
-  const handleSubmit = useCallback(async (data: CompleteRegisterData) => {
-    const {
-      description, telephone, city, uf, district, number, street,
-    } = data;
-
+  const handleSubmit = useCallback(async ({
+    description, telephone, city, uf, district, number, street, name,
+  }: CompleteRegisterData) => {
     await api.patch('/users/completeRegister', {
+      name,
       description,
       telephone,
       city,
@@ -151,6 +152,7 @@ const CompleteRegister:React.FC = () => {
                 <img src={dataForm.avatar ? `http://localhost:3333/${dataForm.avatar}` : noImageAvatar} alt="avatar" />
                 <input type="file" id="avatar" onChange={handleAvatarChange} />
               </label>
+              <Input defaultValue={dataForm.name ? dataForm.name : undefined} icon={FaRegUserCircle} name="name" type="text" placeholder="Name" />
               <TextArea defaultValue={dataForm.description ? dataForm.description : undefined} name="description" placeholder="Descreva o seu perfil aqui!" />
               <Input defaultValue={dataForm.telephone ? dataForm.telephone : undefined} onChange={handleChangeInputOnlyNumber} icon={FiPhoneCall} name="telephone" type="text" placeholder="Telefone" />
               <div className="address">

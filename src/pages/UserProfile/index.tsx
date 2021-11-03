@@ -123,6 +123,12 @@ const UserProfile:React.FC = () => {
                   </span>
                 )}
               </span>
+              {user.address[0] && (
+                <div className="address">
+                  <img src={pinLocalizacao} alt="Pin localizacao" />
+                  <span>{`${user.address[0].street}, ${user.address[0].district} - ${user.address[0].city} - ${user.address[0].uf}`}</span>
+                </div>
+              )}
               {user.interest.length > 0 && (
                 <div className="interesses">
                   <h4>Interesses:</h4>
@@ -133,12 +139,6 @@ const UserProfile:React.FC = () => {
                       </div>
                     ))}
                   </div>
-                </div>
-              )}
-              {user.address[0] && (
-                <div className="address">
-                  <img src={pinLocalizacao} alt="Pin localizacao" />
-                  <span>{`${user.address[0].street}, ${user.address[0].district} - ${user.address[0].city} - ${user.address[0].uf}`}</span>
                 </div>
               )}
             </div>
