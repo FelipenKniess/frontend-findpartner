@@ -13,6 +13,7 @@ import Connections from '../pages/Connections';
 import InterestedUsers from '../pages/InterestedUsers';
 import RegisterInterest from '../pages/RegisterInterests';
 import RegisterProducts from '../pages/RegisterProducts';
+import ListProducts from '../pages/ListProducts';
 
 const Routes:React.FC = () => (
   <Switch>
@@ -25,7 +26,8 @@ const Routes:React.FC = () => (
     <Route component={Connections} path="/connections" isPrivate />
     <Route component={InterestedUsers} path="/interestedUsers" isPrivate />
     <Route component={RegisterInterest} path="/registerInterests" isPrivate />
-    <Route component={RegisterProducts} path="/registerProducts" isPrivate />
+    <Route component={RegisterProducts} path="/registerProduct" isPrivate />
+    <Route component={ListProducts} path="/listProducts" isPrivate />
   </Switch>
 );
 

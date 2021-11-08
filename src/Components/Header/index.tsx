@@ -1,26 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import MenuConfig from '../MenuItems';
 
 import { useAuth } from '../../hooks/auth';
 import { Container } from './styles';
+import UserProfile from '../../pages/UserProfile';
 
 const Header = () => {
-  const { signOut } = useAuth();
+  const { path } = useRouteMatch();
 
   return (
     <Container>
       <div className="links">
-        <Link to="/">
+        <Link className={path === '/home' ? 'current' : ''} to="/">
           Usuários principais
         </Link>
-        <Link to="/findUsers">
+        <Link className={path === '/findUsers' ? 'current' : ''} to="/findUsers">
           Procurar usuários
         </Link>
-        <Link to="/connections">
+        <Link className={path === '/connections' ? 'current' : ''} to="/connections">
           Minhas conexões
         </Link>
-        <Link to="/interestedUsers">
+        <Link className={path === '/interestedUsers' ? 'current' : ''} to="/interestedUsers">
           Usuários interessados
         </Link>
       </div>

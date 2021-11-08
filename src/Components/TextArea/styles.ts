@@ -8,13 +8,13 @@ interface containerProps {
 }
 
 export const Container = styled.div<containerProps>`
-    background: #232129;
+    background: #FFF;
     display:flex;
     width: 100%;
     padding: 16px;
     border-radius: 10px;
     border: 2px solid #232129;
-    color: #666360;
+    color: #29292e;
 
     ${(props) => props.isErrored
         && css`
@@ -45,7 +45,7 @@ export const Container = styled.div<containerProps>`
     textarea {
         flex: 1;
         background: transparent;
-        color: #fff;
+        color: #29292e;
         border: 0;
 
         &::placeholder {

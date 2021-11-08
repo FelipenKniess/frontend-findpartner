@@ -35,20 +35,19 @@ const Connections:React.FC = () => {
         <div className="container">
           {connections.length > 0 ? (
             <>
-              <h1>Conexões</h1>
               <div>
                 <div className="list-connections">
                   <h2>Minhas Conexões</h2>
                   <ul>
                     {connections.map(({ id, user }) => (
                       <li key={id}>
-                        <img src={user.avatar ? user.avatar : noImageAvatar} alt="ImgUser" />
+                        <img src={user.avatar ? `http://localhost:3333/${user.avatar}` : noImageAvatar} alt="profile" />
                         <span>{user.name}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-                <Chat />
+                {/* <Chat /> */}
               </div>
             </>
           ) : (

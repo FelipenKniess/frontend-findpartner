@@ -12,6 +12,15 @@ export const Container = styled.div`
     font-size: 25px;
   }
 
+  .filters {
+    form {
+      display: flex;
+      background: #DCDCDC;
+      padding: 20px;
+      border-radius: 20px;
+      gap: 10px;
+    }
+  }
   .users {
     display: flex;
     flex-wrap: wrap;
@@ -27,9 +36,11 @@ export const Container = styled.div`
       padding: 5px;
       border-radius: 10px;
       transition: 0.2s background;
+      background: #FFF;
       border: 1px solid #0C0E13;
+
       &:hover{
-        background: ${shade(0.2, '#1F1D2B')};
+        background: ${shade(0.1, '#FFF')};
       }
       img {
         width: 250px;
@@ -53,7 +64,7 @@ export const Container = styled.div`
         margin-top: 5px;
         margin-left: 5px;
         font-size: 14px;
-        color: #FFF;
+        color: #29292e;
         /* line-height: 2px; */
       }
     }

@@ -12,8 +12,6 @@ export const Background = styled.div`
     flex: 1;
     background: url(${signInBackgroundImg}) no-repeat center;
     background-size: cover;
-    opacity: 0.4;
-
 `;
 
 export const Content = styled.div`
@@ -68,7 +66,7 @@ export const AnimationContainer = styled.div`
 
         h1 {
             font-size: 24px;
-            color: #F4EDE8;
+            color: #29292e;
             text-align:center;
             margin-bottom: 24px;
         }

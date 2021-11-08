@@ -17,35 +17,40 @@ export const Container = styled.div`
       flex: 1;
       flex-direction: column;
       padding: 40px;
-      background: #0C0E13;
+      background: #DCDCDC;
       border-radius: 20px;
       gap: 30px;
 
       h3 {
         font-size: 24px;
+        font-weight: bold;
         color: #13997E;
       }
 
       p {
         font-size: 16px;
+        color: #656e7b;
       }
 
       .tel {
         span {
           display: flex;
           gap: 10px;
+          color: #656e7b;
           svg {
-            color: #13997E;
+            color: #656e7b;
           }
         }
       }
       .data {
         font-size: 14px;
-        color: #CCC;
+        color: #656e7b;
       }
 
       .interesses {
         margin-top: auto;
+        color: #656e7b;
+
         h4 {
           margin-bottom: 10px;
         }
@@ -56,6 +61,7 @@ export const Container = styled.div`
 
           div {
             padding: 5px 10px;
+            color: #FFF;
             background: #13997E;
             border-radius: 20px;
 
@@ -69,8 +75,19 @@ export const Container = styled.div`
       .address {
         display: flex;
         gap: 8px;
+        color: #656e7b;
         img {
           width:20px;
+        }
+      }
+
+      .email {
+        display: flex;
+        color: #656e7b;
+        gap: 8px;
+
+        svg {
+          color: #656e7b;
         }
       }
     }
@@ -80,6 +97,8 @@ export const Container = styled.div`
       align-items: center;
       gap: 10px;
       img {
+        border-radius: 20px;
+        border: 1px solid #656e7b;
         width: 400px;
         height: 400px;
       }

@@ -39,18 +39,18 @@ export const AnimationContainer = styled.div`
     .logo {
         width: 230px;
         height: 134px;
-
     }
 
     form {
         display: flex;
         flex-direction: column;
-        margin-top: 80px;
+        margin-top: 40px;
         width: 340px;
 
         .user-type {
           margin-bottom: 10px;
           display: flex;
+          color: #29292e;
           justify-content: center;
           align-items: center;
           gap: 20px;
@@ -73,7 +73,7 @@ export const AnimationContainer = styled.div`
 
         h1 {
             font-size: 24px;
-            color: #F4EDE8;
+            color: #29292e;
             text-align:center;
             margin-bottom: 24px;
         }
@@ -116,5 +116,4 @@ export const Background = styled.div`
     flex: 1;
     background: url(${signUpBackgroundImg}) no-repeat center;
     background-size: cover;
-    opacity: 0.4;
 `;

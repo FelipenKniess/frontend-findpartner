@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  background: #0C0E13;
+  background: #FFF;
   justify-content: space-between;
   padding: 20px 150px;
   font-size: 18px;
+  border: 1px solid #13997E;
 
   @media(max-width:767px){
     flex-direction: column;
@@ -15,12 +16,11 @@ export const Container = styled.div`
     gap: 30px;
   }
   a, button, span {
-    color: hsl(222deg 5% 52%);
+    color: #29292e;
     transition: 0.2s color;
     cursor: pointer;
     &:hover {
-
-      color: hsl(222deg 14% 90%);
+      color: #13997E;
     }
   }
 
@@ -28,6 +28,12 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     gap: 25px;
+
+    a {
+      &.current {
+        color: #13997E;
+      }
+    }
   }
 
   .logout {

@@ -18,7 +18,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 50px;
-    background: #0C0E13;
+    background: #DCDCDC;
     border-radius: 20px;
     gap: 20px;
 
@@ -48,6 +48,7 @@ export const Container = styled.div`
     .address {
       display: flex;
       flex-direction: column;
+      color: #29292e;
       width: 100%;
       gap: 10px;
       > div {

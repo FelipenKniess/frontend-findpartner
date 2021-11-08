@@ -49,7 +49,7 @@ export default function BasicMenu() {
         </MenuItem>
         {user.type === 2 && (
           <MenuItem>
-            <Link to="/registerProducts">
+            <Link to="/listProducts">
               Meus produtos
             </Link>
           </MenuItem>

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FiPhoneCall } from 'react-icons/fi';
+import { AiOutlineMail } from 'react-icons/ai';
 import { useRouteMatch, useHistory } from 'react-router-dom';
 import { styled, Box } from '@mui/system';
 import ModalUnstyled from '@mui/core/ModalUnstyled';
@@ -123,6 +124,12 @@ const UserProfile:React.FC = () => {
                   </span>
                 )}
               </span>
+              {user.email && (
+                <div className="email">
+                  <AiOutlineMail size={18} />
+                  <span>{user.email}</span>
+                </div>
+              )}
               {user.address[0] && (
                 <div className="address">
                   <img src={pinLocalizacao} alt="Pin localizacao" />

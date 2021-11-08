@@ -10,6 +10,7 @@ export const Container = styled.div`
   h1 {
     text-align: center;
     font-size: 25px;
+    color: #29292e;
   }
 
   .users {
@@ -27,9 +28,10 @@ export const Container = styled.div`
       padding: 5px;
       border-radius: 10px;
       transition: 0.2s background;
+      background: #FFF;
       border: 1px solid #0C0E13;
       &:hover{
-        background: ${shade(0.2, '#1F1D2B')};
+        background: ${shade(0.1, '#FFF')};
       }
       img {
         width: 250px;
@@ -40,21 +42,18 @@ export const Container = styled.div`
       .name-user {
         margin-top: 5px;
         margin-left: 5px;
-        font-size: 14px;
+        font-size: 16px;
         color: #13997E;
       }
 
       .tel-user{
-        color: #13997E;
+        color: #29292e;
         display: flex;
         align-items: center;
         gap: 5px;
-        /* justify-content: center; */
         margin-top: 5px;
         margin-left: 5px;
         font-size: 14px;
-        color: #FFF;
-        /* line-height: 2px; */
       }
     }
   }

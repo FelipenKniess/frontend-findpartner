@@ -12,22 +12,21 @@ export const Container = styled.div`
 
   .container {
     display:flex;
-    justify-content: space-around;
-    gap: 40px;
+    justify-content: space-between;
+    gap: 50px;
+    .content-register {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
   }
 
   .storage-interests {
-    width: 40%;
-    height: 400px;
-    /* overflow: scroll; */
+    width: 400px;
   }
 
-  .my-interests{
-    width: 60%;
-  }
-
-  .storage-interests, .my-interests {
-    background: #0C0E13;
+  .storage-interests, .register-interest, .list-interests {
+    background: #DCDCDC;
     border-radius: 20px;
     padding: 20px;
 

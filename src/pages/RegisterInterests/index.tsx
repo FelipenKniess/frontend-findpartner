@@ -53,7 +53,6 @@ const RegisterInterests:React.FC = () => {
         },
       });
       setInterestsUser([...interestsUser, data]);
-      toast.success('Interesse cadastrado!');
     } catch (err:any) {
       toast.error(err.response.data.message);
     }
@@ -68,7 +67,6 @@ const RegisterInterests:React.FC = () => {
       });
       const interests = interestsUser.filter((interest) => interest.id !== id);
       setInterestsUser(interests);
-      toast.success('Interesse Removido!');
     } catch (err:any) {
       toast.error(err.response.data.message);
     }
@@ -78,6 +76,37 @@ const RegisterInterests:React.FC = () => {
       <Header />
       <Container>
         <div className="container">
+          <div className="content-register">
+            <div className="register-interest">
+              <h2>Cadastrar interesse</h2>
+              <Form ref={formRef} onSubmit={handleSubmit}>
+                <div className="addInterest">
+                  <Input className="inputInterest" name="interest" />
+                  <Button type="submit">Adicionar</Button>
+                </div>
+              </Form>
+            </div>
+            <div className="list-interests">
+              <h2>Meus interesses</h2>
+              <div className="content-interests">
+                {interestsUser.map((interest) => (
+                  <div
+                    key={interest.id}
+                    onClick={() => handleRemoveInterest(interest.id)}
+                    onKeyDown={() => handleRemoveInterest(interest.id)}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    {interest.description}
+                    {' '}
+                    <span>
+                      <CgExtensionRemove />
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
           <div className="storage-interests">
             <h2>Banco de interesses</h2>
             <div className="content-interests">
@@ -96,33 +125,7 @@ const RegisterInterests:React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="my-interests">
-            <h2>Meus interesses</h2>
-            <Form ref={formRef} onSubmit={handleSubmit}>
-              <div className="addInterest">
-                <Input className="inputInterest" name="interest" />
-                <Button type="submit">Adicionar</Button>
-              </div>
 
-              <div className="content-interests">
-                {interestsUser.map((interest) => (
-                  <div
-                    key={interest.id}
-                    onClick={() => handleRemoveInterest(interest.id)}
-                    onKeyDown={() => handleRemoveInterest(interest.id)}
-                    role="button"
-                    tabIndex={0}
-                  >
-                    {interest.description}
-                    {' '}
-                    <span>
-                      <CgExtensionRemove />
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </Form>
-          </div>
         </div>
       </Container>
     </>
