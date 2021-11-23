@@ -10,6 +10,7 @@ export const Container = styled.div`
     h1 {
       text-align: center;
       font-size: 25px;
+      color: #29292e;
     }
     > div {
       display:flex;

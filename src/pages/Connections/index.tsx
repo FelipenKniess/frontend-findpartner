@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import { Link } from 'react-router-dom';
 import { Container } from './styles';
 import Header from '../../Components/Header';
-import Chat from '../../Components/Chat';
 import noImageAvatar from '../../assets/images/no-image.gif';
 import { UserData, useAuth } from '../../hooks/auth';
 import api from '../../services/api';
@@ -27,7 +27,6 @@ const Connections:React.FC = () => {
     }
     execute();
   }, [token]);
-
   return (
     <>
       <Header />
@@ -37,17 +36,23 @@ const Connections:React.FC = () => {
             <>
               <div>
                 <div className="list-connections">
-                  <h2>Minhas Conexões</h2>
+                  <h2>Minhas conexões</h2>
                   <ul>
                     {connections.map(({ id, user }) => (
                       <li key={id}>
-                        <img src={user.avatar ? `http://localhost:3333/${user.avatar}` : noImageAvatar} alt="profile" />
-                        <span>{user.name}</span>
+                        <a
+                          href={`https://api.whatsapp.com/send?phone=${user.telephone}&text=Ol%C3%A1%2C%20bora%20fechar%20uma%20parceria!%20`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <img src={user.avatar ? `http://localhost:3333/${user.avatar}` : noImageAvatar} alt="profile" />
+                          <span>{user.name}</span>
+                          <span className="acess-profile">Iniciar conversa</span>
+                        </a>
                       </li>
                     ))}
                   </ul>
                 </div>
-                {/* <Chat /> */}
               </div>
             </>
           ) : (

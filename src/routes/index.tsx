@@ -26,7 +26,7 @@ const Routes:React.FC = () => (
     <Route component={Connections} path="/connections" isPrivate />
     <Route component={InterestedUsers} path="/interestedUsers" isPrivate />
     <Route component={RegisterInterest} path="/registerInterests" isPrivate />
-    <Route component={RegisterProducts} path="/registerProduct" isPrivate />
+    <Route component={RegisterProducts} path="/registerProduct/:idProduct?" isPrivate />
     <Route component={ListProducts} path="/listProducts" isPrivate />
   </Switch>
 );

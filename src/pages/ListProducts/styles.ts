@@ -31,6 +31,15 @@ export const Container = styled.div`
             width: 200px;
             height: 200px;
         }
+
+        .actions {
+            svg {
+                cursor: pointer;
+                & + svg {
+                    margin-left:10px;
+                }
+            }
+        }
     }
 
 `;

@@ -4,6 +4,8 @@ import React, {
 import { toast } from 'react-toastify';
 import api from '../services/api';
 
+/* eslint-disable camelcase */
+
 interface SignInCredentials {
     email: String;
     password: String;
@@ -38,6 +40,12 @@ interface Interest {
   description: string
 }
 
+interface Product {
+  name: string;
+  price: number;
+  image_product: string;
+}
+
 export interface UserData {
   id: string,
   email: string,
@@ -48,6 +56,7 @@ export interface UserData {
   description: string,
   address: Address[];
   interest: Interest[];
+  products: Product[];
   createdAt?: string;
 }
 

@@ -12,6 +12,7 @@ import Button from '../../Components/Button';
 import api from '../../services/api';
 import { useAuth, UserData } from '../../hooks/auth';
 import pinLocalizacao from '../../assets/images/pin-localizacao.png';
+import formatValue from '../../utils/formatValue';
 
 interface UserInfoParams {
   id: string;
@@ -97,13 +98,13 @@ const UserProfile:React.FC = () => {
         toast.success('Que legal, você demonstrou interesse no usuário!');
       }
     } catch (err: any) {
-      toast.error(err.response.data.message);
+      toast.info(err.response.data.message);
     }
   }, [connectUsers]);
 
   const handleClickGoToChat = useCallback(() => {
-    history.push('/chat');
-  }, [history]);
+    window.open(`https://api.whatsapp.com/send?phone=${user?.telephone}&text=Ol%C3%A1%2C%20bora%20fechar%20uma%20parceria!%20`, '_blank');
+  }, [user?.telephone]);
 
   return (
     <>
@@ -112,49 +113,66 @@ const UserProfile:React.FC = () => {
         <div className="container">
           {user && (
           <>
-            <div className="box">
-              <span className="data">{user.createdAt}</span>
-              <h3>{user.name}</h3>
-              <p>{user.description ? user.description : 'Usuário sem descrição...'}</p>
-              <span className="tel">
-                {user.telephone && (
-                  <span>
-                    <FiPhoneCall />
-                    {user.telephone}
-                  </span>
+            <div>
+              <div className="box">
+                <span className="data">{user.createdAt}</span>
+                <h3>{user.name}</h3>
+                <p>{user.description ? user.description : 'Usuário sem descrição...'}</p>
+                <span className="tel">
+                  {user.telephone && (
+                    <span>
+                      <FiPhoneCall />
+                      {user.telephone}
+                    </span>
+                  )}
+                </span>
+                {user.email && (
+                  <div className="email">
+                    <AiOutlineMail size={18} />
+                    <span>{user.email}</span>
+                  </div>
                 )}
-              </span>
-              {user.email && (
-                <div className="email">
-                  <AiOutlineMail size={18} />
-                  <span>{user.email}</span>
-                </div>
-              )}
-              {user.address[0] && (
-                <div className="address">
-                  <img src={pinLocalizacao} alt="Pin localizacao" />
-                  <span>{`${user.address[0].street}, ${user.address[0].district} - ${user.address[0].city} - ${user.address[0].uf}`}</span>
-                </div>
-              )}
-              {user.interest.length > 0 && (
-                <div className="interesses">
-                  <h4>Interesses:</h4>
-                  <div className="content">
-                    {user.interest.map((interest) => (
+                {user.address[0] && (
+                  <div className="address">
+                    <img src={pinLocalizacao} alt="Pin localizacao" />
+                    <span>{`${user.address[0].street}, ${user.address[0].district} - ${user.address[0].city} - ${user.address[0].uf}`}</span>
+                  </div>
+                )}
+                {user.interest.length > 0 && (
+                  <div className="interesses">
+                    <h4>Interesses:</h4>
+                    <div className="content">
+                      {user.interest.map((interest) => (
+                        <div>
+                          <span>{interest.description}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="image-profile">
+                <img src={user.avatar ? `http://localhost:3333/${user.avatar}` : noImageAvatar} alt="profile" />
+                <Button onClick={handleConnectUsers}>
+                  Demonstrar interesse
+                </Button>
+              </div>
+            </div>
+
+              {user.products && user.type === 2 && (
+                <>
+                  <h5>Listagem de produtos</h5>
+                  <div className="list-products">
+                    {user.products.map((product) => (
                       <div>
-                        <span>{interest.description}</span>
+                        <img src={product.image_product ? `http://localhost:3333/${product.image_product}` : noImageAvatar} alt="Product" />
+                        <span className="name">{product.name}</span>
+                        <span className="price">{formatValue(product.price)}</span>
                       </div>
                     ))}
                   </div>
-                </div>
+                </>
               )}
-            </div>
-            <div className="image-profile">
-              <img src={user.avatar ? `http://localhost:3333/${user.avatar}` : noImageAvatar} alt="profile" />
-              <Button onClick={handleConnectUsers}>
-                Estou interessado
-              </Button>
-            </div>
           </>
           )}
         </div>
@@ -177,7 +195,7 @@ const UserProfile:React.FC = () => {
                 também está interessado, comece já a conversar!
               </p>
               <Button onClick={handleClickGoToChat} style={{ width: 'initial' }}>
-                Ir para o chat
+                Iniciar Conversa
               </Button>
             </div>
           </Box>

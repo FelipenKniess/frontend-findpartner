@@ -51,7 +51,7 @@ const Select:React.FC<SelectProps> = ({
         defaultValue={defaultValue}
         {...rest}
       >
-        <option defaultValue={undefined}>
+        <option value={undefined}>
           Selecione...
         </option>
         {options.map((option) => (
