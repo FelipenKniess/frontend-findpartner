@@ -18,7 +18,9 @@ export const Container = styled.div`
     margin-bottom:40px;
     gap: 10px;
     text-transform: uppercase;
-
+    @media(max-width: 1000px){
+      width: 100%;
+    }
   }
 
   form {
@@ -46,10 +48,16 @@ export const Container = styled.div`
         width: 300px;
         height: 200px;
         border-radius: 40px;
+        @media(max-width: 1000px){
+          width: 250px;
+        }
       }
 
       input {
         margin-top: 10px;
+        @media(max-width: 1000px){
+          width: 200px;
+        }
       }
     }
 
@@ -59,10 +67,18 @@ export const Container = styled.div`
       color: #29292e;
       width: 100%;
       gap: 10px;
+
+      @media(max-width: 1000px){
+          width: inherit;
+      }
+
       > div {
         gap: 30px;
         display: flex;
         justify-content: space-between;
+        @media(max-width: 1000px){
+          flex-direction: column;
+        }
 
         div {
           flex: 1;
@@ -77,6 +93,9 @@ export const Container = styled.div`
 
     button {
       width: 400px;
+      @media(max-width: 1000px){
+          width: 200px;
+      }
     }
 
   }

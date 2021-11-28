@@ -14,6 +14,11 @@ export const Container = styled.div`
     display:flex;
     justify-content: space-between;
     gap: 50px;
+
+    @media(max-width: 1000px){
+      flex-direction: column;
+      width: 100%;
+    }
     .content-register {
       display: flex;
       flex-direction: column;
@@ -23,6 +28,9 @@ export const Container = styled.div`
 
   .storage-interests {
     width: 400px;
+    @media(max-width: 1000px){
+      width: 100%;
+    }
   }
 
   .storage-interests, .register-interest, .list-interests {
@@ -42,7 +50,10 @@ export const Container = styled.div`
       flex-direction: column;
       align-items: center;
       height: 100%;
-      padding: 20px
+      padding: 20px;
+      @media(max-width: 1000px){
+        flex-direction: column;
+      }
     }
 
     .addInterest {
@@ -51,7 +62,9 @@ export const Container = styled.div`
       justify-content: center;
       margin-top: 15px;
       gap: 10px;
-
+      @media(max-width: 1000px){
+        flex-direction: column;
+      }
       button {
         width: 200px;
       }

@@ -4,14 +4,22 @@ import signInBackgroundImg from '../../assets/images/background-login.png';
 
 export const Container = styled.div`
     display: flex;
-    height: 100vh; //adiciona 100% da tela para o usuário
+    height: 100vh;
     align-items: stretch;
+    @media(max-width: 1000px){
+        justify-content: center;
+        height: inherit;
+    }
 
 `;
 export const Background = styled.div`
     flex: 1;
     background: url(${signInBackgroundImg}) no-repeat center;
     background-size: cover;
+
+    @media(max-width: 1000px){
+        display: none;
+    }
 `;
 
 export const Content = styled.div`
@@ -53,6 +61,10 @@ export const AnimationContainer = styled.div`
         flex-direction: column;
         margin-top: 80px;
         width: 340px;
+
+        @media(max-width: 1000px){
+            padding: 20px;
+        }
 
         div {
             & + div {

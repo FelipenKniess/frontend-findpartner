@@ -7,6 +7,10 @@ export const Container = styled.div`
     height: 100vh; //adiciona 100% da tela para o usuário
     align-items: stretch;
 
+    @media(max-width: 1000px){
+        justify-content: center;
+        height: inherit;
+    }
 `;
 
 export const Content = styled.div`
@@ -47,6 +51,9 @@ export const AnimationContainer = styled.div`
         margin-top: 40px;
         width: 340px;
 
+        @media(max-width: 1000px){
+            padding: 20px;
+        }
         .user-type {
           margin-bottom: 10px;
           display: flex;
@@ -116,4 +123,7 @@ export const Background = styled.div`
     flex: 1;
     background: url(${signUpBackgroundImg}) no-repeat center;
     background-size: cover;
+    @media(max-width: 1000px){
+        display: none;
+    }
 `;

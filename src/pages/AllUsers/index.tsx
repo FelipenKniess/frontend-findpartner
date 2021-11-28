@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useState, useRef, useCallback,
+  useState, useRef, useCallback,
 } from 'react';
 import { FiPhoneCall } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
@@ -13,27 +13,26 @@ import { useAuth, UserData } from '../../hooks/auth';
 import Input from '../../Components/Input';
 import api from '../../services/api';
 
+interface FiltersUser {
+  name?: string,
+  interest?: string,
+  product?: string
+}
+
 const Home:React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { token } = useAuth();
   const [users, setUsers] = useState<UserData[]>([]);
 
-  useEffect(() => {
-    async function execute() {
-      const oppositeUsers = await api.get('/users/allUsers', {
-        headers: {
-          authorization: token,
-        },
-      });
-      setUsers(oppositeUsers.data);
-    }
-
-    execute();
+  const handleSubmit = useCallback(async ({ name, interest, product }: FiltersUser) => {
+    const { data } = await api.get(`/users/filter/?name=${name}&interest=${interest}&product=${product}`, {
+      headers: {
+        authorization: token,
+      },
+    });
+    setUsers(data);
   }, [token]);
 
-  const handleSubmit = useCallback(() => {
-
-  }, []);
   return (
     <>
       <Header />
@@ -47,7 +46,7 @@ const Home:React.FC = () => {
               <Input name="name" type="text" placeholder="Nome" />
               <Input name="interest" type="text" placeholder="Interesse" />
               <Input name="product" type="text" placeholder="Produto" />
-              <Button>
+              <Button type="submit">
                 Filtrar
               </Button>
             </Form>

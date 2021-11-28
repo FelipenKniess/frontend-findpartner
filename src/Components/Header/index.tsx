@@ -2,11 +2,9 @@ import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import MenuConfig from '../MenuItems';
 
-import { useAuth } from '../../hooks/auth';
 import { Container } from './styles';
-import UserProfile from '../../pages/UserProfile';
 
-const Header = () => {
+const Header:React.FC = () => {
   const { path } = useRouteMatch();
 
   return (

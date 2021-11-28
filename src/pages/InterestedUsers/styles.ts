@@ -23,6 +23,9 @@ export const Container = styled.div`
         padding: 30px;
         border-radius: 20px;
 
+        @media(max-width: 1000px){
+          width: inherit;
+        }
         h2 {
           font-size: 20px;
           color: #29292e;

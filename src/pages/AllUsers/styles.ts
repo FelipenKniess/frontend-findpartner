@@ -19,6 +19,10 @@ export const Container = styled.div`
       padding: 20px;
       border-radius: 20px;
       gap: 10px;
+
+      @media(max-width: 1000px){
+        flex-direction: column;
+      }
     }
   }
   .users {

@@ -13,12 +13,13 @@ const Home:React.FC = () => {
 
   useEffect(() => {
     async function execute() {
-      const oppositeUsers = await api.get('/users/allUsers', {
+      const { data } = await api.get('/users/similarInterests', {
         headers: {
           authorization: token,
         },
       });
-      setUsers(oppositeUsers.data);
+      console.log(data);
+      setUsers(data);
     }
 
     execute();

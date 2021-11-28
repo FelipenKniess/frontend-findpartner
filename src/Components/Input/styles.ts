@@ -16,6 +16,10 @@ export const Container = styled.div<containerProps>`
     border: 2px solid #232129;
     color: #29292e;
 
+    @media(max-width: 1000px){
+
+    }
+
     ${(props) => props.isErrored
         && css`
             border-color: #c53030;

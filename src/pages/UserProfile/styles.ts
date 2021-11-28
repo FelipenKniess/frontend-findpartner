@@ -12,11 +12,16 @@ export const Container = styled.div`
     flex-direction: column;
     width: 100%;
 
+
     > div {
-        display: flex;
-        gap: 25px;
-        width: 100%;
-        justify-content: space-between;
+      display: flex;
+      gap: 25px;
+      width: 100%;
+      justify-content: space-between;
+
+      @media(max-width: 1000px){
+          flex-direction: column-reverse;
+      }
 
         .box {
           display: flex;
@@ -26,6 +31,10 @@ export const Container = styled.div`
           background: #DCDCDC;
           border-radius: 20px;
           gap: 30px;
+
+          @media(max-width: 1000px){
+            margin: 15px;
+          }
 
           h3 {
             font-size: 24px;
@@ -107,6 +116,11 @@ export const Container = styled.div`
             border: 1px solid #656e7b;
             width: 400px;
             height: 400px;
+          }
+          button {
+            @media(max-width: 1000px){
+              width: 50%;
+            }
           }
         }
       }
