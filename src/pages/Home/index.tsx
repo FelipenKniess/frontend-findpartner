@@ -18,7 +18,6 @@ const Home:React.FC = () => {
           authorization: token,
         },
       });
-      console.log(data);
       setUsers(data);
     }
 
@@ -35,17 +34,26 @@ const Home:React.FC = () => {
             {user.type === 1 ? ' Fornecedores ' : ' Varejistas '}
           </h1>
           <div className="users">
-            {users.map((resUser) => (
-              <Link to={`/user/${resUser.id}`} key={resUser.id} className="user">
-                <img src={resUser.avatar ? `http://localhost:3333/${resUser.avatar}` : noImageAvatar} alt={resUser.name} />
-                <span className="name-user">{resUser.name}</span>
+            {users.length > 0 ? (
+              users.map((resUser) => (
+                <Link to={`/user/${resUser.id}`} key={resUser.id} className="user">
+                  <img src={resUser.avatar ? `http://localhost:3333/${resUser.avatar}` : noImageAvatar} alt={resUser.name} />
+                  <span className="name-user">{resUser.name}</span>
 
-                <span className="tel-user">
-                  <FiPhoneCall />
-                  {resUser.telephone ? resUser.telephone : 'Sem número cadastrado'}
-                </span>
-              </Link>
-            ))}
+                  <span className="tel-user">
+                    <FiPhoneCall />
+                    {resUser.telephone ? resUser.telephone : 'Sem número cadastrado'}
+                  </span>
+                </Link>
+              ))
+
+            ) : (
+              <h2>
+                Você não tem usuários com os mesmos interesses,
+                {' '}
+                <Link to="/registerInterests">Configure seus interesses!</Link>
+              </h2>
+            )}
           </div>
         </div>
       </Container>

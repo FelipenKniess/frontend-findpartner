@@ -17,7 +17,6 @@ export const Container = styled.div`
       display: flex;
       gap: 25px;
       width: 100%;
-      justify-content: space-between;
 
       @media(max-width: 1000px){
           flex-direction: column-reverse;
@@ -138,7 +137,7 @@ export const Container = styled.div`
           flex-direction: column;
           align-items: center;
           gap: 5px;
-          background: ${shade(0.2, '#DCDCDC')};
+          background: ${shade(0.06, '#DCDCDC')};
           border-radius: 10px;
           img {
             width: 275px;

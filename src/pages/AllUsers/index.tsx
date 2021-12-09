@@ -1,5 +1,5 @@
 import React, {
-  useState, useRef, useCallback,
+  useState, useRef, useCallback, useEffect,
 } from 'react';
 import { FiPhoneCall } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
@@ -21,11 +21,11 @@ interface FiltersUser {
 
 const Home:React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-  const { token } = useAuth();
+  const { token, user } = useAuth();
   const [users, setUsers] = useState<UserData[]>([]);
 
   const handleSubmit = useCallback(async ({ name, interest, product }: FiltersUser) => {
-    const { data } = await api.get(`/users/filter/?name=${name}&interest=${interest}&product=${product}`, {
+    const { data } = await api.get(`/users/filter/?name=${name || ''}&interest=${interest || ''}&product=${product || ''}`, {
       headers: {
         authorization: token,
       },
@@ -33,6 +33,9 @@ const Home:React.FC = () => {
     setUsers(data);
   }, [token]);
 
+  useEffect(() => {
+    handleSubmit({});
+  }, [handleSubmit]);
   return (
     <>
       <Header />
@@ -45,7 +48,9 @@ const Home:React.FC = () => {
             >
               <Input name="name" type="text" placeholder="Nome" />
               <Input name="interest" type="text" placeholder="Interesse" />
-              <Input name="product" type="text" placeholder="Produto" />
+              {user.type === 1 && (
+                <Input name="product" type="text" placeholder="Produto" />
+              )}
               <Button type="submit">
                 Filtrar
               </Button>

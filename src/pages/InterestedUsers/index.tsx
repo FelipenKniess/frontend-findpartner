@@ -18,7 +18,7 @@ const InterestedUsers:React.FC = () => {
 
   useEffect(() => {
     async function execute() {
-      const { data } = await api.get('/connections/matchs', {
+      const { data } = await api.get('/connections/interests', {
         headers: {
           authorization: token,
         },

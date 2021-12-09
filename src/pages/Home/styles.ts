@@ -13,6 +13,15 @@ export const Container = styled.div`
     color: #29292e;
   }
 
+  h2 {
+    text-align: center;
+    font-size: 20px;
+    color: #29292e;
+    a {
+      color: #13997E;
+    }
+  }
+
   .users {
     display: flex;
     flex-wrap: wrap;
